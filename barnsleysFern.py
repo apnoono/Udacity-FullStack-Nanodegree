@@ -1,16 +1,10 @@
 #!/usr/bin/python -tt
 import turtle
-from turtle import *
-colors = ["red", "blue", "yellow", "green"] #palette for .pencolor method
 
 """
-This program generates fractal curve designs
+This program generates Barnsley-like fractal curve designs
 using affine transforms:
-(1) A Barnsley-like curve using affine transformations
-
 """
-
-
 class FractalTurtle(turtle.Turtle):
     # Example derived from Barnsely Fern in Python 3
     # https://solarianprogrammer.com/2017/11/02/barnsley-fern-python-3/
@@ -102,12 +96,8 @@ def main():
     img_height = 250
     scale = min([img_height/(artist.curve.y_max - artist.curve.y_min), img_width/(artist.curve.x_max - artist.curve.x_min)]) * 0.9
 
-    print(artist.fillcolor())
-    print(artist.heading())
-
-
-    # For every point of the fractal data, transform the point in the image
-    # and fill the pixel color
+    # For every point of the fractal data, move turtle to that point
+    # and simulate filling the pixel by moving turtle slightly forward
     for i in range(10000):
         x = int((artist.curve.point_x[i] - artist.curve.x_min) * scale) + int((img_width - (artist.curve.x_max - artist.curve.x_min) * scale)/2)
         print("x: " + str(x))
